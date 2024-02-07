@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('global_settings', function (Blueprint $table) {
             $table->id();
-            $table->double('tax');
+            $table->string('business_name');
+            $table->string('business_address');
+            $table->string('business_logo');
+            $table->double('tax')->nullable();
+            $table->string('income_prefix')->nullable();
+            $table->string('expense_prefix')->nullable();
             $table->timestamps();
         });
     }

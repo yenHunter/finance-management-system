@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('organization_address');
             $table->string('organization_telephone');
             $table->string('organization_mobile');
+            $table->integer('status')->default(1);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();

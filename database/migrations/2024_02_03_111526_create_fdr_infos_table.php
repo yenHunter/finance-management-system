@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('fdr_infos', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
             $table->string('fund_type');
+            $table->string('financial_year');
             $table->unsignedBigInteger('bank_id');
             $table->foreign('bank_id')->references('id')->on('bank_infos');
             $table->string('fdr_no');
@@ -23,6 +25,7 @@ return new class extends Migration
             $table->double('interest_rate');
             $table->double('amount');
             $table->double('excise_duty')->nullable();
+            $table->integer('status')->default(1);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();

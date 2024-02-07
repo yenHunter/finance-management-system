@@ -20,6 +20,9 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('login', [AuthController::class, 'login'])->name('login')->middleware('throttle:3,1');
     Route::get('register', [AuthController::class, 'register_view'])->name('register');
     Route::post('register', [AuthController::class, 'register'])->name('register')->middleware('throttle:3,1');
+    Route::get('recovery', [AuthController::class, 'recovery_view'])->name('recovery');
+    Route::post('recovery', [AuthController::class, 'recovery'])->name('recovery');
 });
-
-Route::get('/', [HomeController::class, 'dashboard_view'])->name('/');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [HomeController::class, 'dashboard_view'])->name('/');
+});

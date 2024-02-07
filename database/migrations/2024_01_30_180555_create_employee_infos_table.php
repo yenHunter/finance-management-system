@@ -20,6 +20,9 @@ return new class extends Migration
             $table->foreign('organization')->references('id')->on('organizations');
             $table->unsignedBigInteger('designation');
             $table->foreign('designation')->references('id')->on('designations');
+            $table->integer('status')->default(1);
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

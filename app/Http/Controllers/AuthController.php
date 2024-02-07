@@ -20,6 +20,11 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+    public function recovery_view()
+    {
+        return view('auth.recovery');
+    }
+
     public function login(Request $request)
     {
         // Validation
