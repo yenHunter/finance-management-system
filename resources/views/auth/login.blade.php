@@ -78,10 +78,11 @@
                     <h3 class="mb-1 fw-bold">Finance Management System</h3>
                     <p class="mb-4">Please sign-in to your account</p>
 
-                    <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                    <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email-username"
+                            <input type="text" class="form-control" id="email" name="email"
                                 placeholder="Enter your email" autofocus />
                         </div>
                         <div class="mb-3 form-password-toggle">
@@ -106,15 +107,8 @@
                         <button class="btn btn-primary d-grid w-100">Sign in</button>
                     </form>
 
-                    <p class="text-center">
-                        <span>New on our platform?</span>
-                        <a href="{{ route('register') }}">
-                            <span>Create an account</span>
-                        </a>
-                    </p>
-
                     <div class="divider my-4">
-                        <div class="divider-text"></div>
+                        <hr />
                     </div>
 
                     <div class="d-flex justify-content-center">

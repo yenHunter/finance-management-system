@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IncomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +25,9 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('recovery', [AuthController::class, 'recovery'])->name('recovery');
 });
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', [HomeController::class, 'dashboard_view'])->name('/');
+    Route::redirect('/', 'dashboard');
+    Route::get('dashboard', [HomeController::class, 'dashboard_view'])->name('dashboard');
+    Route::get('income-list', [IncomeController::class, 'income_list_view'])->name('income-list');
+    Route::get('income-create', [IncomeController::class, 'income_create_view'])->name('income-create');
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

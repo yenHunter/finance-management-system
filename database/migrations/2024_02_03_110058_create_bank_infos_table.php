@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('branch_name');
             $table->string('address')->nullable();
             $table->string('swift_code')->nullable();
+            $table->string('logo')->nullable();
             $table->integer('status')->default(1);
             $table->integer('created_by');
             $table->integer('updated_by');

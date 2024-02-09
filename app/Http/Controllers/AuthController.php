@@ -12,6 +12,7 @@ class AuthController extends Controller
 {
     public function login_view()
     {
+        
         return view('auth.login');
     }
 
