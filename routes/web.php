@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +33,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('income-list', [IncomeController::class, 'income_list_view'])->name('income-list');
     Route::get('income-create', [IncomeController::class, 'income_create_view'])->name('income-create');
     Route::get('bank-list', [IncomeController::class, 'bank_list_view'])->name('bank-list');
+    Route::get('expense-list', [ExpenseController::class, 'expense_list_view'])->name('expense-list');
+    Route::get('expense-create', [ExpenseController::class, 'expense_create_view'])->name('expense-create');
+    Route::get('expense-head', [ExpenseController::class, 'expense_head_view'])->name('expense-head');
+    Route::get('report', [ReportController::class, 'bank_list_view'])->name('report');
+    Route::get('user-list', [UserController::class, 'user_list_view'])->name('user-list');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

@@ -18,8 +18,8 @@
     <ul class="menu-inner py-1">
         <!-- Dashboards -->
         <li class="menu-item @if (Session::get('active') == 'dashboard') {{ 'active' }} @endif">
-            <a href="javascript:void(0);" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+            <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-layout-dashboard"></i>
                 <div data-i18n="Dashboards">Dashboard</div>
             </a>
         </li>
@@ -40,34 +40,40 @@
                     </a>
                 </li>
                 <li class="menu-item @if (Session::get('active') == 'bank_list') {{ 'active' }} @endif">
-                    <a href="{{route('bank-list')}}" class="menu-link">
+                    <a href="{{ route('bank-list') }}" class="menu-link">
                         <div data-i18n="Bank List">Bank List</div>
                     </a>
                 </li>
             </ul>
         </li>
-        <li class="menu-item">
+        <li class="menu-item @if (Session::get('open') == 'expense') {{ 'active open' }} @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-file-dollar"></i>
                 <div data-i18n="Expense">Expense</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="app-invoice-list.html" class="menu-link">
+                <li class="menu-item @if (Session::get('active') == 'expense_list') {{ 'active' }} @endif">
+                    <a href="{{ route('expense-list') }}" class="menu-link">
                         <div data-i18n="List">List</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="app-invoice-preview.html" class="menu-link">
+                <li class="menu-item @if (Session::get('active') == 'expense_create') {{ 'active' }} @endif">
+                    <a href="{{ route('expense-create') }}" class="menu-link">
                         <div data-i18n="Create">Create</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="app-invoice-preview.html" class="menu-link">
+                <li class="menu-item @if (Session::get('active') == 'expense_head') {{ 'active' }} @endif">
+                    <a href="{{ route('expense-head') }}" class="menu-link">
                         <div data-i18n="Expense Head">Expense Head</div>
                     </a>
                 </li>
             </ul>
+        </li>
+        <li class="menu-item @if (Session::get('active') == 'report') {{ 'active' }} @endif">
+            <a href="{{ route('report') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-chart-infographic"></i>
+                <div data-i18n="Reports">Reports</div>
+            </a>
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -76,7 +82,7 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="app-user-list.html" class="menu-link">
+                    <a href="{{ route('user-list') }}" class="menu-link">
                         <div data-i18n="List">List</div>
                     </a>
                 </li>

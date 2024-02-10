@@ -1,6 +1,4 @@
-# finance-management-system
-
-Finance Management System
+# Finance Management System (FMS)
 
 Welcome to Finance Management System.
 Develop by Cyberjatra (Pvt.) Ltd.
