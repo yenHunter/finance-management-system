@@ -35,8 +35,13 @@
                     </a>
                 </li>
                 <li class="menu-item @if (Session::get('active') == 'income_create') {{ 'active' }} @endif">
-                    <a href="income-create" class="menu-link">
+                    <a href="{{ route('income-create') }}" class="menu-link">
                         <div data-i18n="Create">Create</div>
+                    </a>
+                </li>
+                <li class="menu-item @if (Session::get('active') == 'bank_list') {{ 'active' }} @endif">
+                    <a href="{{route('bank-list')}}" class="menu-link">
+                        <div data-i18n="Bank List">Bank List</div>
                     </a>
                 </li>
             </ul>

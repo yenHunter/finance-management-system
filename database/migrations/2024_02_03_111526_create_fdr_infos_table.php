@@ -25,6 +25,7 @@ return new class extends Migration
             $table->double('interest_rate');
             $table->double('amount');
             $table->double('excise_duty')->nullable();
+            $table->longText('note');
             $table->integer('status')->default(1);
             $table->integer('created_by');
             $table->integer('updated_by');

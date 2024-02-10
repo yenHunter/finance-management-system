@@ -28,4 +28,15 @@ class IncomeController extends Controller
             return redirect('login')->withErrors('Error');
         }
     }
+
+    public function bank_list_view()
+    {
+        if (Session::get('user') != null) {
+            Session::put('open', 'income');
+            Session::put('active', 'bank_list');
+            return view('pages.income.bank');
+        } else {
+            return redirect('login')->withErrors('Error');
+        }
+    }
 }

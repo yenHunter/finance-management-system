@@ -9,38 +9,90 @@
             <div class="col-xl">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Basic Layout</h5>
+                        <h5 class="mb-0">Add Income Records</h5>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                                <label class="form-label" for="basic-default-fullname">Full Name</label>
-                                <input type="text" class="form-control" id="basic-default-fullname"
-                                    placeholder="John Doe" />
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="basic-default-company">Company</label>
-                                <input type="text" class="form-control" id="basic-default-company"
-                                    placeholder="ACME Inc." />
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="basic-default-email">Email</label>
-                                <div class="input-group input-group-merge">
-                                    <input type="text" id="basic-default-email" class="form-control"
-                                        placeholder="john.doe" aria-label="john.doe"
-                                        aria-describedby="basic-default-email2" />
-                                    <span class="input-group-text" id="basic-default-email2">@example.com</span>
+                        <form action="" method="POST">
+                            <div class="row">
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Income Code</label>
+                                    <input type="text" value="Income-" class="form-control" placeholder="Income Code" />
                                 </div>
-                                <div class="form-text">You can use letters, numbers & periods</div>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Fund Type</label>
+                                    <select class="form-control" name="fund_type">
+                                        <option value="1">Endowment Trust</option>
+                                        <option value="2">BKGET Fund</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="basic-default-phone">Phone No</label>
-                                <input type="text" id="basic-default-phone" class="form-control phone-mask"
-                                    placeholder="658 799 8941" />
+                            <div class="row">
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Financial Year</label>
+                                    <input type="text" name="financial_year" value="" class="form-control"
+                                        placeholder="Financial Year" />
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Bank Name</label>
+                                    <select class="form-control" name="bank_id">
+                                        <option value="1">City Bank, Farmgate Branch</option>
+                                        <option value="2">Dutch Bangla Bank Limited, Farmgate Branch</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="basic-default-message">Message</label>
-                                <textarea id="basic-default-message" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?"></textarea>
+                            <div class="mb-2">
+                                <label class="form-label">FDR Number</label>
+                                <input type="text" name="fdr_no" class="form-control" placeholder="FDR Number" />
+                            </div>
+                            <div class="row">
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Opening Date</label>
+                                    <input type="date" name="opening_date" value="" class="form-control" />
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Maturity Date</label>
+                                    <input type="date" name="maturity_date" value="" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Duration</label>
+                                    <input type="text" name="duration" value="" class="form-control"
+                                        placeholder="Duration" />
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Interest Rate</label>
+                                    <div class="input-group">
+                                        <input type="number" name="interest_rate" class="form-control"
+                                            placeholder="Interest Rate">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Amount</label>
+                                    <div class="input-group">
+                                        <input type="number" name="amount" class="form-control" placeholder="Amount">
+                                        <span class="input-group-text">in Taka</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Duration</label>
+                                    <input type="number" name="duration" value="" class="form-control"
+                                        placeholder="Duration" />
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Note</label>
+                                <textarea class="form-control" placeholder="Note"></textarea>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Status</label>
+                                <select class="form-control" name="status">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Send</button>
                         </form>

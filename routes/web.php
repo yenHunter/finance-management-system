@@ -29,5 +29,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', [HomeController::class, 'dashboard_view'])->name('dashboard');
     Route::get('income-list', [IncomeController::class, 'income_list_view'])->name('income-list');
     Route::get('income-create', [IncomeController::class, 'income_create_view'])->name('income-create');
+    Route::get('bank-list', [IncomeController::class, 'bank_list_view'])->name('bank-list');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
