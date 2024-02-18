@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('content')
-    <title>Mohajon | Income List</title>
+    <title>Mohajon | Expence Head List</title>
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.bootstrap5.min.css') }}" />
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4">
@@ -10,7 +10,7 @@
         <!-- Hoverable Table rows -->
         <div class="card">
             <div class="card-header header-elements">
-                <h5 class="card-title">Bank List</h5>
+                <h5 class="card-title">Expence Head List</h5>
                 <div class="card-header-elements ms-auto">
                     <a class="btn btn-sm btn-primary waves-effect waves-light" href="#" data-bs-toggle="modal"
                         data-bs-target="#largeModal">
@@ -31,7 +31,7 @@
                         </thead>
                         <tbody class="table-border-bottom-0">
                             <tr>
-                                <td>Expense Head 1</td>
+                                <td>Maintenance and repairs</td>
                                 <td><span class="badge bg-label-primary me-1">Active</span></td>
                                 <td>
                                     <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
@@ -39,7 +39,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Expense Head 2</td>
+                                <td>Salary</td>
                                 <td><span class="badge bg-label-primary me-1">Active</span></td>
                                 <td>
                                     <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
@@ -47,7 +47,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Expense Head 3</td>
+                                <td>KGF Fund</td>
                                 <td><span class="badge bg-label-primary me-1">Active</span></td>
                                 <td>
                                     <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
@@ -55,7 +55,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Expense Head 4</td>
+                                <td>Office Supplies</td>
                                 <td><span class="badge bg-label-primary me-1">Active</span></td>
                                 <td>
                                     <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
@@ -63,7 +63,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Expense Head 5</td>
+                                <td>Utilities</td>
                                 <td><span class="badge bg-label-primary me-1">Active</span></td>
                                 <td>
                                     <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>

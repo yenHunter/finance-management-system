@@ -23,11 +23,11 @@
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Fund Type</label>
                                     <select class="form-control" name="expense_head">
-                                        <option>Expense Head 1</option>
-                                        <option>Expense Head 2</option>
-                                        <option>Expense Head 3</option>
-                                        <option>Expense Head 4</option>
-                                        <option>Expense Head 5</option>
+                                        <option>Maintenance and repairs</option>
+                                        <option>Salary</option>
+                                        <option>KGF Fund</option>
+                                        <option>Office Supplies</option>
+                                        <option>Utilities</option>
                                     </select>
                                 </div>
                             </div>

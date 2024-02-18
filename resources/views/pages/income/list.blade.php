@@ -39,6 +39,7 @@
                                 <th>FDR No</th>
                                 <th>Duration</th>
                                 <th>Amount</th>
+                                <th>Maturity value</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -63,6 +64,7 @@
                                     <small>01 January, 2024</small>
                                 </td>
                                 <td>10000000</td>
+                                <td>70000000</td>
                                 <td><span class="badge bg-label-primary me-1">Active</span></td>
                                 <td class="text-center">
                                     <div class="dropdown">
@@ -99,6 +101,7 @@
                                     <small>01 January, 2024</small>
                                 </td>
                                 <td>10000000</td>
+                                <td>70000000</td>
                                 <td><span class="badge bg-label-primary me-1">Active</span></td>
                                 <td class="text-center">
                                     <div class="dropdown">
@@ -135,6 +138,7 @@
                                     <small>01 January, 2024</small>
                                 </td>
                                 <td>10000000</td>
+                                <td>70000000</td>
                                 <td><span class="badge bg-label-primary me-1">Active</span></td>
                                 <td class="text-center">
                                     <div class="dropdown">
@@ -171,6 +175,7 @@
                                     <small>01 January, 2024</small>
                                 </td>
                                 <td>10000000</td>
+                                <td>70000000</td>
                                 <td><span class="badge bg-label-primary me-1">Active</span></td>
                                 <td class="text-center">
                                     <div class="dropdown">
@@ -207,6 +212,7 @@
                                     <small>01 January, 2024</small>
                                 </td>
                                 <td>10000000</td>
+                                <td>70000000</td>
                                 <td><span class="badge bg-label-primary me-1">Active</span></td>
                                 <td class="text-center">
                                     <div class="dropdown">

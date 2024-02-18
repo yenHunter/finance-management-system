@@ -20,10 +20,10 @@
                     <h6 class="m-0 me-2">Expense Head</h6>
                     <select class="form-select form-select-sm w-auto">
                         <option selected>All</option>
-                        <option>Expense Head 1</option>
-                        <option>Expense Head 2</option>
-                        <option>Expense Head 3</option>
-                        <option>Expense Head 4</option>
+                        <option>Maintenance and repairs</option>
+                        <option>Salary</option>
+                        <option>KGF Fund</option>
+                        <option>Office Supplies</option>
                         <option>Expense Head 5</option>
                     </select>
                     <a class="btn btn-sm btn-primary waves-effect waves-light" href="{{ route('income-create') }}">
@@ -46,7 +46,7 @@
                         </thead>
                         <tbody class="table-border-bottom-0">
                             <tr>
-                                <td>Expense Head 1</td>
+                                <td>Maintenance and repairs</td>
                                 <td>
                                     <small>01 January, 2023</small><br />
                                     <small>2023-24</small>
@@ -70,7 +70,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Expense Head 2</td>
+                                <td>Salary</td>
                                 <td>
                                     <small>01 January, 2023</small><br />
                                     <small>2023-24</small>
@@ -94,7 +94,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Expense Head 3</td>
+                                <td>KGF Fund</td>
                                 <td>
                                     <small>01 January, 2023</small><br />
                                     <small>2023-24</small>
@@ -118,7 +118,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Expense Head 4</td>
+                                <td>Office Supplies</td>
                                 <td>
                                     <small>01 January, 2023</small><br />
                                     <small>2023-24</small>
@@ -142,7 +142,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Expense Head 5</td>
+                                <td>Utilities</td>
                                 <td>
                                     <small>01 January, 2023</small><br />
                                     <small>2023-24</small>

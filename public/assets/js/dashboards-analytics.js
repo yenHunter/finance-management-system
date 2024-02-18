@@ -152,18 +152,18 @@
         config.colors_label.primary
       ],
       dataLabels: {
-        enabled: false
+        enabled: true
       },
       series: [
         {
-          data: [40, 65, 50, 45, 90, 55, 70]
+          data: [40, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         }
       ],
       legend: {
         show: false
       },
       xaxis: {
-        categories: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         axisBorder: {
           show: false
         },

@@ -168,13 +168,13 @@
                                 <div class="d-flex">
                                     <div class="flex-shrink-0 me-3">
                                         <div class="avatar">
-                                            <img src="../../assets/img/avatars/1.png" alt
-                                                class="h-auto rounded-circle" />
+                                            {{-- <img src="../../assets/img/avatars/1.png" alt
+                                                class="h-auto rounded-circle" /> --}}
                                         </div>
                                     </div>
                                     <div class="flex-grow-1">
-                                        <h6 class="mb-1">Congratulation Lettie 🎉</h6>
-                                        <p class="mb-0">Won the monthly best seller gold badge</p>
+                                        <h6 class="mb-1">FDR Matured</h6>
+                                        <p class="mb-0">Dear Concern Your FDR has been matured</p>
                                         <small class="text-muted">1h ago</small>
                                     </div>
                                     <div class="flex-shrink-0 dropdown-notifications-actions">

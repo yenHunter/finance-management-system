@@ -40,26 +40,29 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="mb-2">
-                                <label class="form-label">FDR Number</label>
-                                <input type="text" name="fdr_no" class="form-control" placeholder="FDR Number" />
-                            </div>
+                            
                             <div class="row">
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">FDR Number</label>
+                                    <input type="text" name="fdr_no" class="form-control" placeholder="FDR Number" />
+                                </div>
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Opening Date</label>
                                     <input type="date" name="opening_date" value="" class="form-control" />
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Maturity Date</label>
                                     <input type="date" name="maturity_date" value="" class="form-control" />
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Duration</label>
                                     <input type="text" name="duration" value="" class="form-control"
                                         placeholder="Duration" />
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Interest Rate</label>
                                     <div class="input-group">
@@ -68,19 +71,12 @@
                                         <span class="input-group-text">%</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Amount</label>
                                     <div class="input-group">
                                         <input type="number" name="amount" class="form-control" placeholder="Amount">
                                         <span class="input-group-text">in Taka</span>
                                     </div>
-                                </div>
-                                <div class="col-6 mb-2">
-                                    <label class="form-label">Duration</label>
-                                    <input type="number" name="duration" value="" class="form-control"
-                                        placeholder="Duration" />
                                 </div>
                             </div>
                             <div class="mb-2">
