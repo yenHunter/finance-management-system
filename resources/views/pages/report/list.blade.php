@@ -7,6 +7,14 @@
         <h4 class="fw-bold py-3 mb-4">
             <a class="text-muted fw-light" href="{{ route('dashboard') }}">Dashboard </a>/ Reports
         </h4>
+
+
+        <a href="{{ route('report_gen') }}" class="menu-link">
+            <i class="menu-icon tf-icons ti ti-chart-infographic"></i>
+            <div data-i18n="Reports">Report Gen</div>
+        </a>
+
+
         <!-- Hoverable Table rows -->
         <div class="card">
             <div class="card-header header-elements">

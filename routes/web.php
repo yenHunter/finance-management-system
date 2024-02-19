@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('expense-create', [ExpenseController::class, 'expense_create_view'])->name('expense-create');
     Route::get('expense-head', [ExpenseController::class, 'expense_head_view'])->name('expense-head');
     Route::get('report', [ReportController::class, 'report_view'])->name('report');
+    Route::get('report_gen', [ReportController::class, 'displayReport'])->name('report_gen');
     Route::get('user-list', [UserController::class, 'user_list_view'])->name('user-list');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
