@@ -11,22 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fdr_infos', function (Blueprint $table) {
+        Schema::create('income_details', function (Blueprint $table) {
             $table->id();
             $table->string('code');
             $table->string('fund_type');
             $table->string('financial_year');
-            $table->unsignedBigInteger('bank_id');
-            $table->foreign('bank_id')->references('id')->on('bank_infos');
-            $table->string('fdr_no');
-            $table->date('opening_date');
-            $table->date('maturity_date');
-            $table->string('duration');
-            $table->double('interest_rate');
+            $table->integer('bank_id')->nullable();
+            $table->unsignedBigInteger('income_head')->nullable();
+            $table->foreign('income_head')->references('id')->on('income_heads');
+            $table->string('number');
+            $table->date('opening_date')->nullable();
+            $table->date('maturity_date')->nullable();
+            $table->string('duration')->nullable();
+            $table->double('interest_rate')->nullable();
             $table->double('amount');
             $table->double('excise_duty')->nullable();
-            $table->longText('note');
+            $table->longText('note')->nullable();
+            $table->string('attachment')->nullable();
             $table->integer('status')->default(1);
+            $table->integer('flag')->default(0);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
@@ -38,6 +41,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fdr_infos');
+        Schema::dropIfExists('income_details');
     }
 };

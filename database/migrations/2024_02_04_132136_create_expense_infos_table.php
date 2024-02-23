@@ -19,8 +19,10 @@ return new class extends Migration
             $table->unsignedBigInteger('expense_head');
             $table->foreign('expense_head')->references('id')->on('expense_heads');
             $table->double('amount');
-            $table->longText('details');
+            $table->longText('note')->nullable();
+            $table->string('attachment')->nullable();
             $table->integer('status')->default(1);
+            $table->integer('flag')->default(0);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
