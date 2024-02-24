@@ -44,6 +44,11 @@
                         <div data-i18n="Bank List">Bank List</div>
                     </a>
                 </li>
+                <li class="menu-item @if (Session::get('active') == 'income_head') {{ 'active' }} @endif">
+                    <a href="{{ route('bank-list') }}" class="menu-link">
+                        <div data-i18n="Bank List">Income Head</div>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="menu-item @if (Session::get('open') == 'expense') {{ 'active open' }} @endif">
