@@ -50,7 +50,8 @@
                                         <small class="text-muted d-block">Summary of a income head</small>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
-                                        <button class="btn rounded-pill btn-outline-vimeo btn-sm waves-effect">View</button>
+                                        <a class="btn rounded-pill btn-outline-vimeo btn-sm waves-effect" href="{{route('balance-sheet')}}">View</a>
+                                        {{-- <button class="btn rounded-pill btn-outline-vimeo btn-sm waves-effect">View</button> --}}
                                     </div>
                                 </div>
                             </li>
