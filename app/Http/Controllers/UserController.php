@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use PDF;
 
 class UserController extends Controller
 {
@@ -22,5 +23,24 @@ class UserController extends Controller
         } else {
             return redirect('login')->withErrors('Error');
         }
+    }
+
+    public function genPDF() 
+    {
+        $data = [[
+            'particulars'  => 'Interest Income from FDR',
+            'notes'        => 'Test Notes',
+            'currentYear'  => '100',
+            'previousYear' => '400'
+        ],
+        [
+            'particulars'  => 'Interest Income from FDR',
+            'notes'        => 'Test Notes',
+            'currentYear'  => '200',
+            'previousYear' => '300'
+        ]
+        ];
+        $pdf = PDF::loadView('generatePDF', ['data' => $data]);
+        return $pdf->stream('resume.pdf');
     }
 }
