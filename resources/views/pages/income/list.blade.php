@@ -6,7 +6,18 @@
         <h4 class="fw-bold py-3 mb-4">
             <a class="text-muted fw-light" href="{{ route('dashboard') }}">Dashboard </a>/ Income List
         </h4>
-
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible d-flex align-items-baseline" role="alert">
+                <span class="alert-icon alert-icon-lg text-success me-2">
+                    <i class="ti ti-check ti-sm"></i>
+                </span>
+                <div class="d-flex flex-column ps-1">
+                    <h5 class="alert-heading mb-2">Income Details</h5>
+                    <p class="mb-0">{{ $message }}</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        @endif
         <!-- Hoverable Table rows -->
         <div class="card">
             <div class="card-header header-elements">

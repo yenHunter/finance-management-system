@@ -39,14 +39,9 @@
                         <div data-i18n="Create">Create</div>
                     </a>
                 </li>
-                <li class="menu-item @if (Session::get('active') == 'bank_list') {{ 'active' }} @endif">
-                    <a href="{{ route('bank-list') }}" class="menu-link">
-                        <div data-i18n="Bank List">Bank List</div>
-                    </a>
-                </li>
                 <li class="menu-item @if (Session::get('active') == 'income_head') {{ 'active' }} @endif">
                     <a href="{{ route('bank-list') }}" class="menu-link">
-                        <div data-i18n="Bank List">Income Head</div>
+                        <div data-i18n="Income Head">Income Head</div>
                     </a>
                 </li>
             </ul>
@@ -144,35 +139,15 @@
             </ul>
         </li>
         <!-- Cards -->
-        <li class="menu-item">
+        <li class="menu-item @if (Session::get('open') == 'settings') {{ 'active open' }} @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-settings"></i>
                 <div data-i18n="Settings">Settings</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="cards-basic.html" class="menu-link">
-                        <div data-i18n="Basic">Basic</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="cards-advance.html" class="menu-link">
-                        <div data-i18n="Advance">Advance</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="cards-statistics.html" class="menu-link">
-                        <div data-i18n="Statistics">Statistics</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="cards-analytics.html" class="menu-link">
-                        <div data-i18n="Analytics">Analytics</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="cards-actions.html" class="menu-link">
-                        <div data-i18n="Actions">Actions</div>
+                <li class="menu-item @if (Session::get('active') == 'bank_list') {{ 'active' }} @endif">
+                    <a href="{{ route('bank-list') }}" class="menu-link">
+                        <div data-i18n="Bank List">Bank List</div>
                     </a>
                 </li>
             </ul>

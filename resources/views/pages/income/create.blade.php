@@ -3,7 +3,6 @@
     <title>Mohajon | Income Create</title>
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4"><a class="text-muted fw-light" href="#">Income List</a> / Create</h4>
-
         <!-- Basic Layout -->
         <div class="row">
             <div class="col-xl">
@@ -12,25 +11,37 @@
                         <h5 class="mb-0">Add Income Records</h5>
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form action="{{ route('income-create') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="row">
                                 <div class="col-6 mb-2">
-                                    <label class="form-label">Income Code</label>
-                                    <input type="text" value="Income-" class="form-control" placeholder="Income Code" />
+                                    <label class="form-label">Financial Year</label>
+                                    <span class="badge badge-center rounded-pill bg-label-danger"><i
+                                            class="ti ti-star"></i></span>
+                                    <select class="form-control" name="financial_year">
+                                        <option>2022-23</option>
+                                        <option>2023-24</option>
+                                        <option>2024-25</option>
+                                    </select>
                                 </div>
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Fund Type</label>
                                     <select class="form-control" name="fund_type">
                                         <option value="1">Endowment Trust</option>
                                         <option value="2">BKGET Fund</option>
+                                        <option value="null">None</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6 mb-2">
-                                    <label class="form-label">Financial Year</label>
-                                    <input type="text" name="financial_year" value="" class="form-control"
-                                        placeholder="Financial Year" />
+                                    <label class="form-label">Income Head</label>
+                                    <span class="badge badge-center rounded-pill bg-label-danger"><i
+                                            class="ti ti-star"></i></span>
+                                    <select class="form-control" name="income_head">
+                                        <option value="1">FDR</option>
+                                        <option value="2">Others</option>
+                                    </select>
                                 </div>
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Bank Name</label>
@@ -40,21 +51,21 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-6 mb-2">
-                                    <label class="form-label">FDR Number</label>
-                                    <input type="text" name="fdr_no" class="form-control" placeholder="FDR Number" />
+                                    <label class="form-label">Number</label>
+                                    <input type="text" name="number" class="form-control" placeholder="FDR Number" />
                                 </div>
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Opening Date</label>
-                                    <input type="date" name="opening_date" value="" class="form-control" />
+                                    <input type="date" name="opening_date" class="form-control" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Maturity Date</label>
-                                    <input type="date" name="maturity_date" value="" class="form-control" />
+                                    <input type="date" name="maturity_date" class="form-control" />
                                 </div>
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Duration</label>
@@ -66,13 +77,15 @@
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Interest Rate</label>
                                     <div class="input-group">
-                                        <input type="number" name="interest_rate" class="form-control"
+                                        <input type="number" name="interest_rate" step="0.01" class="form-control"
                                             placeholder="Interest Rate">
                                         <span class="input-group-text">%</span>
                                     </div>
                                 </div>
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Amount</label>
+                                    <span class="badge badge-center rounded-pill bg-label-danger"><i
+                                            class="ti ti-star"></i></span>
                                     <div class="input-group">
                                         <input type="number" name="amount" class="form-control" placeholder="Amount">
                                         <span class="input-group-text">in Taka</span>
@@ -81,7 +94,11 @@
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Note</label>
-                                <textarea class="form-control" placeholder="Note"></textarea>
+                                <textarea class="form-control" name="note" placeholder="Note"></textarea>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Attachment</label>
+                                <input type="file" name="attachment" class="form-control">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
@@ -90,7 +107,7 @@
                                     <option value="0">Inactive</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">Send</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </form>
                     </div>
                 </div>

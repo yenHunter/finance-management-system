@@ -2,37 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\IncomeDetails;
+use App\Models\BankInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class IncomeController extends Controller
+class SettingsController extends Controller
 {
-    public function income_list_view()
+    public function bank_list_view()
     {
         if (Session::get('user') != null) {
-            Session::put('open', 'income');
-            Session::put('active', 'income_list');
-            return view('pages.income.list');
+            Session::put('open', 'settings');
+            Session::put('active', 'bank_list');
+            return view('pages.settings.bank');
         } else {
             return redirect('login')->withErrors('Error');
         }
     }
 
-    // Create income functions
-    public function income_create_view()
-    {
-        if (Session::get('user') != null) {
-            Session::put('open', 'income');
-            Session::put('active', 'income_create');
-            return view('pages.income.create');
-        } else {
-            return redirect('login')->withErrors('Error');
-        }
-    }
-
-    public function income_create_store(Request $request)
-    {
+    public function bank_create(Request $request) {
         if (Session::get('user') != null) {
             // Validation
             $request->validate([
@@ -51,7 +38,7 @@ class IncomeController extends Controller
                 $attachment = null;
             }
             // Save to database
-            $object = new IncomeDetails();
+            $object = new BankInfo();
             $object->code = 1000;
             $object->fund_type = $request->fund_type;
             $object->financial_year = $request->financial_year;

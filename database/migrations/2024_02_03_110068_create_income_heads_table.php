@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('income_heads', function (Blueprint $table) {
             $table->id();
+            $table->string('head_name');
+            $table->integer('status')->default(1);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->default(0)->nullable();
             $table->timestamps();
         });
     }

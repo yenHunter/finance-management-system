@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('income_details', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->string('fund_type');
+            $table->string('fund_type')->nullable();
             $table->string('financial_year');
             $table->integer('bank_id')->nullable();
             $table->unsignedBigInteger('income_head')->nullable();
@@ -29,9 +29,9 @@ return new class extends Migration
             $table->longText('note')->nullable();
             $table->string('attachment')->nullable();
             $table->integer('status')->default(1);
-            $table->integer('flag')->default(0);
+            $table->integer('flag')->default(0)->nullable();
             $table->integer('created_by');
-            $table->integer('updated_by');
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }
