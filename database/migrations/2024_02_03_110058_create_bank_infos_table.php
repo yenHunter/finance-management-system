@@ -14,14 +14,7 @@ return new class extends Migration
         Schema::create('bank_infos', function (Blueprint $table) {
             $table->id();
             $table->string('bank_name');
-            $table->string('branch_code')->nullable();
-            $table->string('branch_name');
-            $table->string('address')->nullable();
-            $table->string('swift_code')->nullable();
             $table->string('logo')->nullable();
-            $table->integer('status')->default(1);
-            $table->integer('created_by');
-            $table->integer('updated_by');
             $table->timestamps();
         });
     }

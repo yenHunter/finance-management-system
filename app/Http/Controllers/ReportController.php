@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\IncomeDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use PdfReport;
 use App\Models\User;
-use PDF;
+use Elibyy\TCPDF\Facades\TCPDF as PDF;
 
 class ReportController extends Controller
 {
@@ -24,9 +24,17 @@ class ReportController extends Controller
     public function balance_sheet_report()
     {
         if (Session::get('user') != null) {
-            $pdf = PDF::loadView('pages.report.balance_sheet');
-            return $pdf->stream('resume.pdf');
-            // return view('pages.report.list');
+            $income_details = IncomeDetails::join('income_details', 'income_details.income_head', '=', 'income_heads.id')
+                ->join('income_details.bank_id','=','bank_infos.id')
+                ->join('income_details.branch_id','=','branch_infos.id')
+                ->select('income_details.*', 'income_heads.head_name', 'bank_infos.bank_name','branch_infos.branch_name');
+            // dd($income_details);
+            PDF::SetTitle('Hello World');
+            PDF::SetFont('helvetica', '', 9);
+            PDF::AddPage();
+            $html = view('pages.report.balance_sheet')->render();
+            PDF::writeHTML($html, true, false, true, false, '');
+            PDF::Output('hello_world.pdf');
         } else {
             return redirect('login')->withErrors('Error');
         }

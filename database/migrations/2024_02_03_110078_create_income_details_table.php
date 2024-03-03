@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('fund_type')->nullable();
             $table->string('financial_year');
             $table->integer('bank_id')->nullable();
+            $table->integer('branch_id')->nullable();
             $table->unsignedBigInteger('income_head')->nullable();
             $table->foreign('income_head')->references('id')->on('income_heads');
             $table->string('number');
