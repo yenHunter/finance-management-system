@@ -25,9 +25,9 @@ class ReportController extends Controller
     {
         if (Session::get('user') != null) {
             $income_details = IncomeDetails::join('income_details', 'income_details.income_head', '=', 'income_heads.id')
-                ->join('income_details.bank_id','=','bank_infos.id')
-                ->join('income_details.branch_id','=','branch_infos.id')
-                ->select('income_details.*', 'income_heads.head_name', 'bank_infos.bank_name','branch_infos.branch_name');
+                ->join('income_details.bank_id', '=', 'bank_infos.id')
+                ->join('income_details.branch_id', '=', 'branch_infos.id')
+                ->select('income_details.*', 'income_heads.head_name', 'bank_infos.bank_name', 'branch_infos.branch_name');
             // dd($income_details);
             PDF::SetTitle('Hello World');
             PDF::SetFont('helvetica', '', 9);

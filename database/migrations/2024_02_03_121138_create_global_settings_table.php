@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('business_name');
             $table->string('business_address');
-            $table->string('business_logo');
+            $table->string('business_logo')->nullable();
             $table->double('tax')->nullable();
             $table->string('income_prefix')->nullable();
             $table->string('expense_prefix')->nullable();

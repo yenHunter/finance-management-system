@@ -11,17 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('expense_infos', function (Blueprint $table) {
+        Schema::create('financial_years', function (Blueprint $table) {
             $table->id();
-            $table->integer('financial_year');
-            $table->date('date');
-            $table->unsignedBigInteger('expense_head');
-            $table->foreign('expense_head')->references('id')->on('expense_heads');
-            $table->double('amount');
-            $table->longText('note')->nullable();
-            $table->string('attachment')->nullable();
+            $table->string('value');
             $table->integer('status')->default(1)->nullable();
-            $table->integer('flag')->default(0)->nullable();
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
             $table->timestamps();
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('expense_infos');
+        Schema::dropIfExists('financial_years');
     }
 };

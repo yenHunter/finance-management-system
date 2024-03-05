@@ -1,16 +1,16 @@
 @extends('layout.app')
 @section('content')
-    <title>Mohajon | Expence Head List</title>
+    <title>Mohajon | Income Head List</title>
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.bootstrap5.min.css') }}" />
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4">
-            <a class="text-muted fw-light" href="{{ route('dashboard') }}">Dashboard </a>/ Bank List
+            <a class="text-muted fw-light" href="{{ route('dashboard') }}">Dashboard </a>/ Income Head List
         </h4>
 
         <!-- Hoverable Table rows -->
         <div class="card">
             <div class="card-header header-elements">
-                <h5 class="card-title">Expence Head List</h5>
+                <h5 class="card-title">Income Head List</h5>
                 <div class="card-header-elements ms-auto">
                     <a class="btn btn-sm btn-primary waves-effect waves-light" href="#" data-bs-toggle="modal"
                         data-bs-target="#largeModal">
@@ -30,46 +30,22 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            <tr>
-                                <td>Maintenance and repairs</td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Salary</td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>KGF Fund</td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Office Supplies</td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Utilities</td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach ($income_head as $item)
+                                <tr>
+                                    <td>{{ $item->head_name }}</td>
+                                    <td>
+                                        @if ($item->status == 1)
+                                            <span class="badge bg-label-primary me-1">Active</span>
+                                        @else
+                                            <span class="badge bg-label-warning me-1">Active</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -108,8 +84,7 @@
                     <div class="row">
                         <div class="col mt-2">
                             <label for="nameLarge" class="form-label me-2">Branch Name</label>
-                            <span class="badge badge-center rounded-pill bg-label-danger"><i
-                                    class="ti ti-star"></i></span>
+                            <span class="badge badge-center rounded-pill bg-label-danger"><i class="ti ti-star"></i></span>
                             <input type="text" id="nameLarge" name="branch_name" class="form-control"
                                 placeholder="Enter Branch Name" />
                         </div>

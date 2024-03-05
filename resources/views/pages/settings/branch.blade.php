@@ -1,16 +1,16 @@
 @extends('layout.app')
 @section('content')
-    <title>Mohajon | Expence Head List</title>
+    <title>Mohajon | Branch List</title>
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.bootstrap5.min.css') }}" />
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4">
-            <a class="text-muted fw-light" href="{{ route('dashboard') }}">Dashboard </a>/ Expence Head List
+            <a class="text-muted fw-light" href="{{ route('dashboard') }}">Dashboard </a>/ Branch List
         </h4>
 
         <!-- Hoverable Table rows -->
         <div class="card">
             <div class="card-header header-elements">
-                <h5 class="card-title">Expence Head List</h5>
+                <h5 class="card-title">Branch List</h5>
                 <div class="card-header-elements ms-auto">
                     <a class="btn btn-sm btn-primary waves-effect waves-light" href="#" data-bs-toggle="modal"
                         data-bs-target="#largeModal">
@@ -25,21 +25,29 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
+                                <th>Branch</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach ($expense_head as $item)
+                            @foreach ($branch_list as $item)
                                 <tr>
-                                    <td>{{ $item->head_name }}</td>
+                                    <td>
+                                        <img src="{{ asset($item->logo) }}" alt="Avatar" class="rounded-circle me-3"
+                                            width="40px" />
+                                        <strong>{{ $item->bank_name }}</strong>
+                                    </td>
+                                    <td>
+                                        {{ $item->branch_name }}
+                                        <small>{{ $item->branch_code }}</small>
+                                    </td>
                                     <td>
                                         @if ($item->status == 1)
                                             <span class="badge bg-label-primary me-1">Active</span>
                                         @else
                                             <span class="badge bg-label-warning me-1">Active</span>
                                         @endif
-                                    </td>
                                     <td>
                                         <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
                                         </a>

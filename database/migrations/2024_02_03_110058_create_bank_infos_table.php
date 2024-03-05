@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('bank_name');
             $table->string('logo')->nullable();
+            $table->integer('status')->default(1)->nullable();
+            $table->integer('created_by');
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }

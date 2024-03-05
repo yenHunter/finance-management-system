@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\BankInfo;
+use App\Models\BranchInfo;
+use App\Models\FinancialYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -13,13 +15,19 @@ class SettingsController extends Controller
         if (Session::get('user') != null) {
             Session::put('open', 'settings');
             Session::put('active', 'bank_list');
-            return view('pages.settings.bank');
+            return view(
+                'pages.settings.bank',
+                [
+                    'bank_list' => BankInfo::get()
+                ]
+            );
         } else {
             return redirect('login')->withErrors('Error');
         }
     }
 
-    public function bank_create(Request $request) {
+    public function bank_create(Request $request)
+    {
         if (Session::get('user') != null) {
             // Validation
             $request->validate([
@@ -59,6 +67,43 @@ class SettingsController extends Controller
             $object->created_by = Session::get('user')['id'];
             $object->save();
             return redirect('income-list')->withSuccess('Created Successfully');
+        } else {
+            return redirect('login')->withErrors('Error');
+        }
+    }
+
+    public function branch_list_view()
+    {
+        if (Session::get('user') != null) {
+            Session::put('open', 'settings');
+            Session::put('active', 'branch_list');
+            return view(
+                'pages.settings.branch',
+                [
+                    'branch_list' => BranchInfo::join('bank_infos', 'branch_infos.bank_id', '=', 'bank_infos.id')->select('branch_infos.*', 'bank_infos.bank_name', 'bank_infos.logo')->get()
+                ]
+            );
+        } else {
+            return redirect('login')->withErrors('Error');
+        }
+    }
+
+    public function branch_list_get($bank_id)
+    {
+        return response()->json(BranchInfo::join('bank_infos', 'branch_infos.bank_id', '=', 'bank_infos.id')->select('branch_infos.*', 'bank_infos.bank_name', 'bank_infos.logo')->where('branch_infos.bank_id', '=', $bank_id)->get());
+    }
+
+    public function financial_year_list_view()
+    {
+        if (Session::get('user') != null) {
+            Session::put('open', 'settings');
+            Session::put('active', 'financial_year_list');
+            return view(
+                'pages.settings.financial_year',
+                [
+                    'financial_year_list' => FinancialYear::get()
+                ]
+            );
         } else {
             return redirect('login')->withErrors('Error');
         }

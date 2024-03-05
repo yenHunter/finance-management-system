@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('income_details', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
             $table->string('fund_type')->nullable();
-            $table->string('financial_year');
+            $table->integer('financial_year');
+            $table->date('date');
             $table->integer('bank_id')->nullable();
             $table->integer('branch_id')->nullable();
             $table->unsignedBigInteger('income_head')->nullable();

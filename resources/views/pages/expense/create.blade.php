@@ -13,45 +13,48 @@
                         <h5 class="mb-0">Add Expense Records</h5>
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form action="{{ route('expense-create') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="row">
                                 <div class="col-6 mb-2">
-                                    <label class="form-label">Expense Code</label>
-                                    <input type="text" value="Expense-" class="form-control"
-                                        placeholder="Expense Code" />
+                                    <label class="form-label">Date</label>
+                                    <input type="date" class="form-control" name="date" />
                                 </div>
                                 <div class="col-6 mb-2">
-                                    <label class="form-label">Fund Type</label>
-                                    <select class="form-control" name="expense_head">
-                                        <option>Maintenance and repairs</option>
-                                        <option>Salary</option>
-                                        <option>KGF Fund</option>
-                                        <option>Office Supplies</option>
-                                        <option>Utilities</option>
+                                    <label class="form-label">Financial Year</label>
+                                    <span class="badge badge-center rounded-pill bg-label-danger"><i
+                                            class="ti ti-star"></i></span>
+                                    <select class="form-control" name="financial_year">
+                                        @foreach ($financial_year as $item)
+                                            <option value="{{ $item->id }}">{{ $item->value }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6 mb-2">
-                                    <label class="form-label">Financial Year</label>
-                                    <input type="text" name="financial_year" value="" class="form-control"
-                                        placeholder="Financial Year" />
+                                    <label class="form-label">Expense Head</label>
+                                    <select class="form-control" name="expense_head">
+                                        @foreach ($expense_head as $item)
+                                            <option value="{{ $item->id }}">{{ $item->head_name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-6 mb-2">
-                                    <label class="form-label">Expense Date</label>
-                                    <input class="form-control" type="date" />
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <label class="form-label">Amount</label>
-                                <div class="input-group">
-                                    <input type="number" name="amount" class="form-control" placeholder="Amount">
-                                    <span class="input-group-text">in Taka</span>
+                                    <label class="form-label">Amount</label>
+                                    <div class="input-group">
+                                        <input type="number" name="amount" class="form-control" placeholder="Amount">
+                                        <span class="input-group-text">in Taka</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Note</label>
-                                <textarea class="form-control" placeholder="Note"></textarea>
+                                <textarea class="form-control" name="note" placeholder="Note"></textarea>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Attachment</label>
+                                <input type="file" name="attachment" class="form-control">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Status</label>

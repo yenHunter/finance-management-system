@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')->references('id')->on('role_infos');
-            $table->integer('status')->default(1);
+            $table->integer('status')->default(1)->nullable();
             $table->timestamps();
         });
     }

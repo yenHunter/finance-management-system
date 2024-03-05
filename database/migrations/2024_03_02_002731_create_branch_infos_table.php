@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('branch_infos', function (Blueprint $table) {
             $table->id();
+            $table->integer('bank_id');
             $table->string('branch_code')->nullable();
             $table->string('branch_name');
-            $table->string('address')->nullable();
+            $table->longText('address')->nullable();
             $table->string('swift_code')->nullable();
-            $table->integer('status')->default(1);
+            $table->integer('status')->default(1)->nullable();
             $table->integer('created_by');
-            $table->integer('updated_by');
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }

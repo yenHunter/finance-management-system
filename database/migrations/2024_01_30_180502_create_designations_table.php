@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('designation_name');
             $table->string('type');
-            $table->integer('status')->default(1);
+            $table->integer('status')->default(1)->nullable();
             $table->integer('created_by');
-            $table->integer('updated_by');
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }

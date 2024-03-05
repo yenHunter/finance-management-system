@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('content')
-    <title>Mohajon | Income List</title>
+    <title>Mohajon | Bank List</title>
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.bootstrap5.min.css') }}" />
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4">
@@ -25,97 +25,30 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Branch</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            <tr>
-                                <td>
-                                    <img src="{{ asset('assets/img/banks/city-bank.jpg') }}" alt="Avatar"
-                                        class="rounded-circle me-3" width="40px" />
-                                    <strong>City Bank</strong>
-                                </td>
-                                <td>
-                                    Farmgate Branch
-                                    <br>
-                                    <small class="text-sm text-muted mb-0">123 Farmgate, Dhaka-1215</small>
-                                </td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="{{ asset('assets/img/banks/dbbl.jpg') }}" alt="Avatar"
-                                        class="rounded-circle me-3" width="40px" />
-                                    <strong>Dutch Bangla Bank Limited</strong>
-                                </td>
-                                <td>
-                                    Farmgate Branch
-                                    <br>
-                                    <small class="text-sm text-muted mb-0">123 Farmgate, Dhaka-1215</small>
-                                </td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="{{ asset('assets/img/banks/islami-bank.jpg') }}" alt="Avatar"
-                                        class="rounded-circle me-3" width="40px" />
-                                    <strong>Islami Bank Bangladesh Ltd</strong><br />
-                                </td>
-                                <td>
-                                    Farmgate Branch
-                                    <br>
-                                    <small class="text-sm text-muted mb-0">123 Farmgate, Dhaka-1215</small>
-                                </td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="{{ asset('assets/img/banks/ab-bank.jpg') }}" alt="Avatar"
-                                        class="rounded-circle me-3" width="40px" />
-                                    <strong>AB Bank</strong><br />
-                                </td>
-                                <td>
-                                    Farmgate Branch
-                                    <br>
-                                    <small class="text-sm text-muted mb-0">123 Farmgate, Dhaka-1215</small>
-                                </td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="{{ asset('assets/img/banks/sonali-bank.jpg') }}" alt="Avatar"
-                                        class="rounded-circle me-3" width="40px" />
-                                    <strong>Sonali Bank Limited</strong><br />
-                                </td>
-                                <td>
-                                    Farmgate Branch
-                                    <br>
-                                    <small class="text-sm text-muted mb-0">123 Farmgate, Dhaka-1215</small>
-                                </td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach ($bank_list as $item)
+                                <tr>
+                                    <td>
+                                        <img src="{{ asset($item->logo) }}" alt="Avatar" class="rounded-circle me-3"
+                                            width="40px" />
+                                        <strong>{{ $item->bank_name }}</strong>
+                                    </td>
+                                    <td>
+                                        @if ($item->status == 1)
+                                            <span class="badge bg-label-primary me-1">Active</span>
+                                        @else
+                                            <span class="badge bg-label-warning me-1">Active</span>
+                                        @endif
+                                    <td>
+                                        <a class="text-danger" href="javascript:void(0);"><i class="ti ti-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -154,8 +87,7 @@
                     <div class="row">
                         <div class="col mt-2">
                             <label for="nameLarge" class="form-label me-2">Branch Name</label>
-                            <span class="badge badge-center rounded-pill bg-label-danger"><i
-                                    class="ti ti-star"></i></span>
+                            <span class="badge badge-center rounded-pill bg-label-danger"><i class="ti ti-star"></i></span>
                             <input type="text" id="nameLarge" name="branch_name" class="form-control"
                                 placeholder="Enter Branch Name" />
                         </div>

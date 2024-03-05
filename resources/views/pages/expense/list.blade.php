@@ -6,6 +6,18 @@
         <h4 class="fw-bold py-3 mb-4">
             <a class="text-muted fw-light" href="{{ route('dashboard') }}">Dashboard </a>/ Expense List
         </h4>
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible d-flex align-items-baseline" role="alert">
+                <span class="alert-icon alert-icon-lg text-success me-2">
+                    <i class="ti ti-check ti-sm"></i>
+                </span>
+                <div class="d-flex flex-column ps-1">
+                    <h5 class="alert-heading mb-2">Expense Details</h5>
+                    <p class="mb-0">{{ $message }}</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        @endif
         <!-- Hoverable Table rows -->
         <div class="card">
             <div class="card-header header-elements">
@@ -20,11 +32,9 @@
                     <h6 class="m-0 me-2">Expense Head</h6>
                     <select class="form-select form-select-sm w-auto">
                         <option selected>All</option>
-                        <option>Maintenance and repairs</option>
-                        <option>Salary</option>
-                        <option>KGF Fund</option>
-                        <option>Office Supplies</option>
-                        <option>Expense Head 5</option>
+                        @foreach ($expense_head as $item)
+                            <option value="{{ $item->id }}">{{ $item->head_name }}</option>
+                        @endforeach
                     </select>
                     <a class="btn btn-sm btn-primary waves-effect waves-light" href="{{ route('income-create') }}">
                         <span class="tf-icon ti ti-plus ti-sm me-1"></span>
@@ -45,126 +55,38 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            <tr>
-                                <td>Maintenance and repairs</td>
-                                <td>
-                                    <small>01 January, 2023</small><br />
-                                    <small>2023-24</small>
-                                </td>
-                                <td>100000</td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td class="text-center">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-pencil me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-trash me-1"></i>
-                                                Delete</a>
+                            @foreach ($expense_list as $item)
+                                <tr>
+                                    <td>{{ $item->head_name }}</td>
+                                    <td>
+                                        <small>{{ $item->value }}</small><br />
+                                        <small>{{ date_format(date_create($item->date),'d M, Y') }}</small>
+                                    </td>
+                                    <td>{{ $item->amount }}</td>
+                                    <td>
+                                        @if ($item->status == 1)
+                                            <span class="badge bg-label-primary me-1">Active</span>
+                                        @else
+                                            <span class="badge bg-label-warning me-1">Active</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                data-bs-toggle="dropdown">
+                                                <i class="ti ti-dots-vertical"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="javascript:void(0);"><i
+                                                        class="ti ti-pencil me-1"></i> Edit</a>
+                                                <a class="dropdown-item" href="javascript:void(0);"><i
+                                                        class="ti ti-trash me-1"></i>
+                                                    Delete</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Salary</td>
-                                <td>
-                                    <small>01 January, 2023</small><br />
-                                    <small>2023-24</small>
-                                </td>
-                                <td>100000</td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td class="text-center">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-pencil me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-trash me-1"></i>
-                                                Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>KGF Fund</td>
-                                <td>
-                                    <small>01 January, 2023</small><br />
-                                    <small>2023-24</small>
-                                </td>
-                                <td>100000</td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td class="text-center">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-pencil me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-trash me-1"></i>
-                                                Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Office Supplies</td>
-                                <td>
-                                    <small>01 January, 2023</small><br />
-                                    <small>2023-24</small>
-                                </td>
-                                <td>100000</td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td class="text-center">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-pencil me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-trash me-1"></i>
-                                                Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Utilities</td>
-                                <td>
-                                    <small>01 January, 2023</small><br />
-                                    <small>2023-24</small>
-                                </td>
-                                <td>100000</td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td class="text-center">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-pencil me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-trash me-1"></i>
-                                                Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

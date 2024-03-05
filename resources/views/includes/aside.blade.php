@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="menu-item @if (Session::get('active') == 'income_head') {{ 'active' }} @endif">
-                    <a href="{{ route('bank-list') }}" class="menu-link">
+                    <a href="{{ route('income-head') }}" class="menu-link">
                         <div data-i18n="Income Head">Income Head</div>
                     </a>
                 </li>
@@ -148,6 +148,20 @@
                 <li class="menu-item @if (Session::get('active') == 'bank_list') {{ 'active' }} @endif">
                     <a href="{{ route('bank-list') }}" class="menu-link">
                         <div data-i18n="Bank List">Bank List</div>
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu-sub">
+                <li class="menu-item @if (Session::get('active') == 'branch_list') {{ 'active' }} @endif">
+                    <a href="{{ route('branch-list') }}" class="menu-link">
+                        <div data-i18n="Branch List">Branch List</div>
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu-sub">
+                <li class="menu-item @if (Session::get('active') == 'financial_year_list') {{ 'active' }} @endif">
+                    <a href="{{ route('financial-year-list') }}" class="menu-link">
+                        <div data-i18n="Financial Year List">Financial Year List</div>
                     </a>
                 </li>
             </ul>
