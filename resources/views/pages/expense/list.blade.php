@@ -36,7 +36,7 @@
                             <option value="{{ $item->id }}">{{ $item->head_name }}</option>
                         @endforeach
                     </select>
-                    <a class="btn btn-sm btn-primary waves-effect waves-light" href="{{ route('income-create') }}">
+                    <a class="btn btn-sm btn-primary waves-effect waves-light" href="{{ route('expense-create') }}">
                         <span class="tf-icon ti ti-plus ti-sm me-1"></span>
                         Create
                     </a>

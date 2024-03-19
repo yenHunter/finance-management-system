@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('expense-head', [ExpenseController::class, 'expense_head_view'])->name('expense-head');
     Route::get('report', [ReportController::class, 'report_view'])->name('report');
     Route::get('balance-sheet', [ReportController::class, 'balance_sheet_report'])->name('balance-sheet');
+    Route::post('FDR-schedule', [ReportController::class, 'fdr_schedule_report'])->name('FDR-schedule');
     Route::get('genPDF', [UserController::class, 'genPDF'])->name('genPDF');
     Route::get('user-list', [UserController::class, 'user_list_view'])->name('user-list');
     Route::get('bank-list', [SettingsController::class, 'bank_list_view'])->name('bank-list');

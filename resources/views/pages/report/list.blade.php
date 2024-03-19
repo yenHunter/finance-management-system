@@ -8,6 +8,39 @@
             <a class="text-muted fw-light" href="{{ route('dashboard') }}">Dashboard </a>/ Reports
         </h4>
         <div class="row">
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <a class="card border border-success" href="{{ route('balance-sheet') }}" target="_blank">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div class="card-title mb-0">
+                            <h5 class="mb-0 me-2">Balance Sheet</h5>
+                            <small>Finantial Year {{ Date('Y') - 1 . '-' . Date('y') }}</small>
+                        </div>
+                        <div class="card-icon">
+                            <span class="badge bg-label-primary rounded-pill p-2">
+                                <i class="ti ti-report-money ti-lg"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <a class="card border border-success" href="#" data-bs-toggle="modal"
+                    data-bs-target="#fdr_schedule_modal">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div class="card-title mb-0">
+                            <h5 class="mb-0 me-2">Schedule of FDR</h5>
+                            <small>Finantial Year {{ Date('Y') - 1 . '-' . Date('y') }}</small>
+                        </div>
+                        <div class="card-icon">
+                            <span class="badge bg-label-success rounded-pill p-2">
+                                <i class="ti ti-report-money ti-lg"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-4">
                 <div class="card border border-success">
                     <div class="card-header d-flex justify-content-between">
@@ -50,7 +83,8 @@
                                         <small class="text-muted d-block">Summary of a income head</small>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
-                                        <a class="btn rounded-pill btn-outline-vimeo btn-sm waves-effect" href="{{route('balance-sheet')}}">View</a>
+                                        <a class="btn rounded-pill btn-outline-vimeo btn-sm waves-effect"
+                                            href="#">View</a>
                                         {{-- <button class="btn rounded-pill btn-outline-vimeo btn-sm waves-effect">View</button> --}}
                                     </div>
                                 </div>
@@ -142,7 +176,8 @@
                                         <small class="text-muted d-block">Summary of all type expense</small>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
-                                        <button class="btn rounded-pill btn-outline-vimeo btn-sm waves-effect">View</button>
+                                        <button
+                                            class="btn rounded-pill btn-outline-vimeo btn-sm waves-effect">View</button>
                                     </div>
                                 </div>
                             </li>
@@ -156,7 +191,8 @@
                                         <small class="text-muted d-block">Summary of a expense head</small>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
-                                        <button class="btn rounded-pill btn-outline-vimeo btn-sm waves-effect">View</button>
+                                        <button
+                                            class="btn rounded-pill btn-outline-vimeo btn-sm waves-effect">View</button>
                                     </div>
                                 </div>
                             </li>
@@ -227,6 +263,45 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="fdr_schedule_modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered1 modal-simple modal-add-new-cc">
+            <div class="modal-content p-3 p-md-5">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="text-center mb-4">
+                        <h3 class="mb-2">Schedule of FDR</h3>
+                        <p class="text-muted">Schedule of FDR for a Financial Year</p>
+                    </div>
+                    <form action="{{ route('FDR-schedule') }}" method="POST" class="row g-3">
+                        @csrf
+                        <div class="col-12">
+                            <label class="form-label w-100">Fund Type</label>
+                            <select class="form-control" name="fund_type">
+                                <option>Endowment Trust</option>
+                                <option>BKGET Fund</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label w-100">Financial Year</label>
+                            <select class="form-control" name="financial_year">
+                                @foreach ($financial_year as $item)
+                                    <option value="{{ $item->id }}">{{ $item->value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary me-sm-3 me-1"
+                                formtarget="_blank">Submit</button>
+                            <button type="reset" class="btn btn-label-secondary btn-reset" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="income_summary_modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered1 modal-simple modal-add-new-cc">
             <div class="modal-content p-3 p-md-5">
@@ -240,7 +315,7 @@
                         <div class="col-12">
                             <label class="form-label w-100">Card Number</label>
                             <select class="form-control" name="">
-                                
+
                             </select>
                         </div>
                         <div class="col-12 col-md-6">

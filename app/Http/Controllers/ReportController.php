@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ExpenseInfo;
+use App\Models\FinancialYear;
 use App\Models\IncomeDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Elibyy\TCPDF\Facades\TCPDF as PDF;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -15,7 +18,12 @@ class ReportController extends Controller
         if (Session::get('user') != null) {
             Session::put('open', '');
             Session::put('active', 'report');
-            return view('pages.report.list');
+            return view(
+                'pages.report.list',
+                [
+                    'financial_year' => FinancialYear::orderBy('value', 'desc')->get(),
+                ]
+            );
         } else {
             return redirect('login')->withErrors('Error');
         }
@@ -24,17 +32,43 @@ class ReportController extends Controller
     public function balance_sheet_report()
     {
         if (Session::get('user') != null) {
-            $income_details = IncomeDetails::join('income_details', 'income_details.income_head', '=', 'income_heads.id')
-                ->join('income_details.bank_id', '=', 'bank_infos.id')
-                ->join('income_details.branch_id', '=', 'branch_infos.id')
-                ->select('income_details.*', 'income_heads.head_name', 'bank_infos.bank_name', 'branch_infos.branch_name');
-            // dd($income_details);
+            $data['income_details'] = IncomeDetails::join('income_heads', 'income_details.income_head', '=', 'income_heads.id')
+                ->select('income_heads.head_name AS income_head', DB::raw('SUM(CASE WHEN financial_year = 3 THEN amount ELSE 0 END) AS current_total_amount'), DB::raw('SUM(CASE WHEN financial_year = 2 THEN amount ELSE 0 END) AS previous_total_amount'))
+                ->groupBy('income_heads.head_name')->get();
+            $data['expense_details'] = ExpenseInfo::join('expense_heads', 'expense_infos.expense_head', '=', 'expense_heads.id')
+                ->select('expense_heads.head_name AS expense_head', DB::raw('SUM(CASE WHEN financial_year = 3 THEN amount ELSE 0 END) AS current_total_amount'), DB::raw('SUM(CASE WHEN financial_year = 2 THEN amount ELSE 0 END) AS previous_total_amount'))
+                ->groupBy('expense_heads.head_name')->get();
+            // dd($data);
             PDF::SetTitle('Hello World');
             PDF::SetFont('helvetica', '', 9);
             PDF::AddPage();
-            $html = view('pages.report.balance_sheet')->render();
+            $html = view('pages.report.balance_sheet', $data)->render();
             PDF::writeHTML($html, true, false, true, false, '');
-            PDF::Output('hello_world.pdf');
+            PDF::Output('balance_sheet_report.pdf');
+        } else {
+            return redirect('login')->withErrors('Error');
+        }
+    }
+
+    public function fdr_schedule_report(Request $request)
+    {
+        if (Session::get('user') != null) {
+            $data['fdr_schedule'] = IncomeDetails::join('bank_infos', 'income_details.bank_id', '=', 'bank_infos.id')
+                ->join('branch_infos', 'income_details.branch_id', '=', 'branch_infos.id')
+                ->select('income_details.*', 'bank_infos.bank_name', 'bank_infos.logo', 'branch_infos.branch_name')
+                ->where('income_details.financial_year', '=', $request->financial_year)
+                ->where('income_details.income_head', '=', 1)
+                ->where('income_details.fund_type', '=', $request->fund_type)
+                ->orderBy('income_details.maturity_date', 'desc')
+                ->get();
+            // dd($data);
+            $data['fund_type'] = $request->fund_type;
+            PDF::SetTitle('Hello World');
+            PDF::SetFont('helvetica', '', 9);
+            PDF::AddPage('L', 'A4');
+            $html = view('pages.report.fdr_schedule', $data)->render();
+            PDF::writeHTML($html, true, false, true, false, '');
+            PDF::Output('fdr_schedule_report.pdf');
         } else {
             return redirect('login')->withErrors('Error');
         }

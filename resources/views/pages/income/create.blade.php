@@ -31,8 +31,8 @@
                                 <div class="col-6 mb-2">
                                     <label class="form-label">Fund Type</label>
                                     <select class="form-control" name="fund_type">
-                                        <option value="1">Endowment Trust</option>
-                                        <option value="2">BKGET Fund</option>
+                                        <option>Endowment Trust</option>
+                                        <option>BKGET Fund</option>
                                         <option value="null">Other</option>
                                     </select>
                                 </div>

@@ -307,22 +307,22 @@
       series: [
         {
           name: 'Earning',
-          data: [15, 10, 20, 8, 12, 18, 12, 5]
+          data: [15, 10, 20, 8, 12, 18, 12, 5, 20, 10, 7, 9]
         },
         {
           name: 'Expense',
-          data: [-7, -10, -7, -12, -6, -9, -5, -8]
+          data: [-7, -10, -7, -12, -6, -9, -5, -8, -13, -3, -20, -4]
         }
       ],
       chart: {
-        height: 230,
-        parentHeightOffset: 0,
+        height: 400,
+        parentHeightOffset: 5,
         stacked: true,
         type: 'bar',
         toolbar: { show: false }
       },
       tooltip: {
-        enabled: false
+        enabled: true
       },
       legend: {
         show: false
